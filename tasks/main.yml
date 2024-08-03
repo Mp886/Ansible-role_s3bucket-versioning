@@ -1,0 +1,13 @@
+---
+# tasks file for role
+
+- name: List S3 buckets in AWS account
+  amazon.aws.s3_bucket_info:
+  register: result
+
+- name: Enable Versioning on specific S3 buckets
+  amazon.aws.s3_bucket:
+    name: "{{ item.name }}"
+    versioning: yes
+  loop: "{{ result.buckets }}"
+  when: item.name in target_buckets

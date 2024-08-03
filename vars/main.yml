@@ -1,0 +1,6 @@
+---
+# vars file for role
+
+
+target_buckets:
+  - beastdemo-policy-as-code
